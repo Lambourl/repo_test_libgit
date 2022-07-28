@@ -1,0 +1,5 @@
+{
+  "nxxm/libgit2" : { "@" : "feature/use-libssh2", "u" : true,  
+    "packages": ["libgit2"], "targets": ["libgit2::git2"]
+  } 
+}
