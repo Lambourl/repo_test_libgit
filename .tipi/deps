@@ -1,5 +1,5 @@
 {
-  "nxxm/libgit2" : { "@" : "feature/use-libssh2-https", "u" : true,  
-    "packages": ["libgit2"], "targets": ["libgit2::git2"]
+  "nxxm/libgit2" : { "@" : "feature/update-fork-with-all-change", "u" : true,  
+    "packages": ["libgit2"], "targets": ["libgit2::libgit2package"]
   } 
 }

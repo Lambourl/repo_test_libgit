@@ -13,10 +13,19 @@ int main() {
     std::string url = "git@github.com:Lambourl/git-test-clone.git";
 
     git_repository *repo = nullptr;
-    git_clone_options ops = GIT_CLONE_OPTIONS_INIT;
-    ops.fetch_opts.callbacks.credentials = creds;
+    git_clone_options clone_opts = GIT_CLONE_OPTIONS_INIT;
+    //git_clone_options clone_opts;
+    //git_clone_init_options(&clone_opts, GIT_CLONE_OPTIONS_VERSION);
 
-    int err = git_clone(&repo, url.c_str(), "/Users/luclambour/workspace/exp/try_uc/luc", &ops);
+    clone_opts.fetch_opts.callbacks.credentials = creds;
+    //clone_opts.fetch_opts.proxy_opts.type = GIT_PROXY_NONE;
+    git_proxy_options_init(&(clone_opts.fetch_opts.proxy_opts), 1);
+    clone_opts.checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE;
+    clone_opts.checkout_opts.progress_payload = nullptr;
+    clone_opts.fetch_opts.callbacks.payload = nullptr;
+    int err = 1;
+
+    err = git_clone(&repo, url.c_str(), "/Users/luclambour/workspace/repo_test_libgit/luc", &clone_opts);
     std::cout << giterr_last()->message << std::endl;
 
     git_libgit2_shutdown();
